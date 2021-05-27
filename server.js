@@ -10,7 +10,7 @@ const uri = process.env.MONGODB_URI;
 app.use(express.static("public"));
 
 // define the first route
-app.get("/api/movie", async function (req, res) {
+app.get("/index", async function (req, res) {
   const client = new MongoClient(uri, { useUnifiedTopology: true });
   
   try {
