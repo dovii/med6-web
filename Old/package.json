@@ -1,0 +1,24 @@
+{
+  "name": "wow-survey",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dovii/med6-web.git"
+  },
+  "author": "Dovile",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dovii/med6-web/issues"
+  },
+  "homepage": "https://github.com/dovii/med6-web#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.9"
+  }
+}
