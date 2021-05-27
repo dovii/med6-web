@@ -7,10 +7,10 @@ const { MongoClient } = require("mongodb");
 const uri = process.env.MONGODB_URI;
 
 // use the express-static middleware
-app.use(express.static(""));
+app.use(express.static("public"));
 
 // define the first route
-app.get("/index", async function (req, res) {
+app.get("index", async function (req, res) {
   const client = new MongoClient(uri, { useUnifiedTopology: true });
   
   try {
