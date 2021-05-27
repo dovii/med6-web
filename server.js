@@ -6,6 +6,9 @@ const { MongoClient } = require("mongodb");
 
 const uri = process.env.MONGODB_URI;
 
+
+
+
 // use the express-static middleware
 app.use(express.static("public"));
 
