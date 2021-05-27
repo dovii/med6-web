@@ -7,7 +7,7 @@ const { MongoClient } = require("mongodb");
 const uri = process.env.MONGODB_URI;
 
 // use the express-static middleware
-app.use(express.static("public"));
+app.use(express.static(""));
 
 // define the first route
 app.get("/index", async function (req, res) {
