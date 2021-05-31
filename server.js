@@ -1,53 +1,52 @@
-const Express = require("express");
-const BodyParser = require("body-parser");
-const MongoClient = require("mongodb").MongoClient;
-const ObjectId = require("mongodb").ObjectID;
+// create an express app
+const express = require("express");
+const app = express();
 
-const CONNECTION_URL = "mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const DATABASE_NAME = "wow-survey";
+const { MongoClient } = require("mongodb");
 
-var app = Express();
+const uri = process.env.MONGODB_URI;
 
-app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({ extended: true }));
 
-var database, collection;
 
-app.listen(3000, () => {
-    MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
-        if (error) {
-            throw error;
+// use the express-static middleware
+app.use(express.static("public"));
+
+// define the first route
+app.get("public/index", async function (req, res) {
+  const client = new MongoClient(uri, { useUnifiedTopology: true });
+  
+  try {
+    await client.connect();
+
+    const database = client.db('sample_mflix');
+    const collection = database.collection('movies');
+
+    // Query for a movie that has the title 'Back to the Future'
+    const query = { genres: "Comedy", poster: { $exists: true } };
+    const cursor = await collection.aggregate([
+      { $match: query },
+      { $sample: { size: 1 } },
+      { $project: 
+        {
+          title: 1,
+          fullplot: 1,
+          poster: 1
         }
-        database = client.db(DATABASE_NAME);
-        collection = database.collection("results");
-        console.log("Connected to `" + DATABASE_NAME);
-    });
+      }
+    ]);
+
+    const movie = await cursor.next();
+
+    return res.json(movie);
+  } catch(err) {
+    console.log(err);
+  }
+  finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
 });
 
-
-app.post("/person", (request, response) => {
-    collection.insert(request.body, (error, result) => {
-        if (error) {
-            return response.status(500).send(error);
-        }
-        response.send(result.result);
-    });
-});
-
-/*app.get("/people", (request, response) => {
-    collection.find({}).toArray((error, result) => {
-        if (error) {
-            return response.status(500).send(error);
-        }
-        response.send(result);
-    });
-});
-
-app.get("/person/:id", (request, response) => {
-    collection.findOne({ "_id": new ObjectId(request.params.id) }, (error, result) => {
-        if (error) {
-            return response.status(500).send(error);
-        }
-        response.send(result);
-    });
-}); */
+// start the server listening for requests
+app.listen(process.env.PORT || 3000, 
+	() => console.log("Server is running..."));
