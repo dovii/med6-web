@@ -1,71 +1,80 @@
-const { MongoClient } = require('mongodb');
+// create an express app
+const express = require("express");
+const app = express();
 
-async function main() {
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
-    const uri = "mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const { MongoClient } = require("mongodb");
 
-    /**
-     * The Mongo Client you will use to interact with your database
-     * See https://mongodb.github.io/node-mongodb-native/3.6/api/MongoClient.html for more details
-     * In case: '[MONGODB DRIVER] Warning: Current Server Discovery and Monitoring engine is deprecated...'
-     * pass option { useUnifiedTopology: true } to the MongoClient constructor.
-     * const client =  new MongoClient(uri, {useUnifiedTopology: true})
-     */
-    
-    const connectionParams = {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true
-    }
-    
-    
-    const client = new MongoClient(uri, connectionParams);
+const uri = process.env.MONGODB_URI;
 
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
+// use the express-static middleware
+app.use(express.static("public"));
 
-        // Make the appropriate DB calls
-        await listDatabases(client);
+// define the first route
+app.get("/index", async function (req, res) {
+  const client = new MongoClient(uri, { useUnifiedTopology: true });
+  
+  try {
+    await client.connect();
 
-        await createListing(client,
-            {
-                name: "Lovely Loft",
-                summary: "A charming loft in Paris",
-                bedrooms: 1,
-                bathrooms: 1
-            }
-        );
-        
+    const database = client.db('sample_mflix');
+    const collection = database.collection('movies');
 
-    } catch (e) {
-        console.error(e);
-    } finally {
-        // Close the connection to the MongoDB cluster
-        await client.close();
-    }
-}
+    await listDatabases(client);
 
-main().catch(console.error);
+    await createListing(client,
+      {
+        name: "Lovely Loft",
+        summary: "A charming loft in Paris",
+        bedrooms: 1,
+        bathrooms: 1
+      }
+    );
 
-/**
- * Print the names of all available databases
- * @param {MongoClient} client A MongoClient that is connected to a cluster
- */
-async function listDatabases(client) {
+    // Query for a movie that has the title 'Back to the Future'
+    const query = { genres: "Comedy", poster: { $exists: true } };
+    const cursor = await collection.aggregate([
+      { $match: query },
+      { $sample: { size: 1 } },
+      { $project: 
+        {
+          title: 1,
+          fullplot: 1,
+          poster: 1
+        }
+      }
+    ]);
+
+    const result = await client.db("wow-survey").collection("results").insertOne(newListing)
+
+    //const movie = await cursor.next();
+
+    return res.json(result);
+  } catch(err) {
+    console.log(err);
+  }
+  finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+
+  async function listDatabases(client) {
     databasesList = await client.db().admin().listDatabases();
 
     console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
+  };
 
-async function createListing(client, newListing) {
+  async function createListing(client, newListing) {
 
     const result = await client.db("wow-survey").collection("results").insertOne(newListing);
 
     console.log(`New listing created with the following id: ${result.insertedId}`);
 
-}
+  }
+
+
+});
+
+// start the server listening for requests
+app.listen(process.env.PORT || 3000, 
+	() => console.log("Server is running..."));
