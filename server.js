@@ -1,51 +1,52 @@
-const express = require('express');
+// create an express app
+const express = require("express");
 const app = express();
-const bodyParser = require('body-parser')
-const MongoClient = require('mongodb').MongoClient
 
-const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const { MongoClient } = require("mongodb");
 
-const connectionParams = {
-    useNewUrlParser: true,
-    //useCreateIndex: true,
-    useUnifiedTopology: true
-}
-
-
-/*MongoClient.connect(connectionString, connectionParams, (err, client) => {
-    if (err) return console.error(err)
-    console.log('Connected to Database')
-}) */
-
-MongoClient.connect(connectionString, connectionParams)
-    .then(client => {
-        console.log('Connected to Database')
-        const db = client.db('wow-survey')
-        const quotesCollection = db.collection('results')
+const uri = process.env.MONGODB_URI;
 
 
 
-// Make sure you place body-parser before your CRUD handlers!
-app.use(bodyParser.urlencoded({ extended: true }))
+// use the express-static middleware
+app.use(express.static("public"));
 
-app.listen(3000, function () {
-    console.log('listening on 3000')
+// define the first route
+app.get("/index", async function (req, res) {
+  const client = new MongoClient(uri, { useUnifiedTopology: true });
+  
+  try {
+    await client.connect();
+
+    const database = client.db('sample_mflix');
+    const collection = database.collection('movies');
+
+    // Query for a movie that has the title 'Back to the Future'
+    const query = { genres: "Comedy", poster: { $exists: true } };
+    const cursor = await collection.aggregate([
+      { $match: query },
+      { $sample: { size: 1 } },
+      { $project: 
+        {
+          title: 1,
+          fullplot: 1,
+          poster: 1
+        }
+      }
+    ]);
+
+    const movie = await cursor.next();
+
+    return res.json(movie);
+  } catch(err) {
+    console.log(err);
+  }
+  finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
 });
 
-
-app.get('/', function (request, response) {
-    response.sendFile(__dirname + '/index.html');
-    // Note: __dirname is the current directory you're in. Try logging it and see what you get!
-    // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
-})
-
-app.post('/quotes', (request, response) => {
-  quotesCollection.insertOne(request.body)
-    .then(result => {
-      response.redirect('/')
-      
-    })
-    .catch(error => console.error(error))
-})
-
-    })
+// start the server listening for requests
+app.listen(process.env.PORT || 3000, 
+	() => console.log("Server is running..."));
