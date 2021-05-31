@@ -33,7 +33,7 @@ app.listen(3000, function () {
 });
 
 
-app.get('/', function (request, response) {
+app.get('/index', function (request, response) {
     response.sendFile(__dirname + '/index.html');
     // Note: __dirname is the current directory you're in. Try logging it and see what you get!
     // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.

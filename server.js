@@ -6,8 +6,6 @@ const { MongoClient } = require("mongodb");
 
 const uri = process.env.MONGODB_URI;
 
-
-
 // use the express-static middleware
 app.use(express.static("public"));
 
@@ -20,6 +18,15 @@ app.get("/index", async function (req, res) {
 
     const database = client.db('sample_mflix');
     const collection = database.collection('movies');
+
+    await createListing(client,
+      {
+        name: "Lovely Loft",
+        summary: "A charming loft in Paris",
+        bedrooms: 1,
+        bathrooms: 1
+      }
+    );
 
     // Query for a movie that has the title 'Back to the Future'
     const query = { genres: "Comedy", poster: { $exists: true } };
@@ -35,9 +42,11 @@ app.get("/index", async function (req, res) {
       }
     ]);
 
-    const movie = await cursor.next();
+    const result = await client.db("wow-survey").collection("results").insertOne(newListing)
 
-    return res.json(movie);
+    //const movie = await cursor.next();
+
+    return res.json(result);
   } catch(err) {
     console.log(err);
   }
