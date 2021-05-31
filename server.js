@@ -1,53 +1,53 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser')
-const MongoClient = require('mongodb').MongoClient
+const Express = require("express");
+const BodyParser = require("body-parser");
+const MongoClient = require("mongodb").MongoClient;
+const ObjectId = require("mongodb").ObjectID;
 
-const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const CONNECTION_URL = "mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const DATABASE_NAME = "wow-survey";
 
-const connectionParams = {
-    useNewUrlParser: true,
-    //useCreateIndex: true,
-    useUnifiedTopology: true
-}
+var app = Express();
 
+app.use(BodyParser.json());
+app.use(BodyParser.urlencoded({ extended: true }));
 
-/*MongoClient.connect(connectionString, connectionParams, (err, client) => {
-    if (err) return console.error(err)
-    console.log('Connected to Database')
-}) */
+var database, collection;
 
-MongoClient.connect(connectionString, connectionParams)
-    .then(client => {
-        console.log('Connected to Database')
-        const db = client.db('wow-survey')
-        const quotesCollection = db.collection('results')
-
-
-
-
-
-// Make sure you place body-parser before your CRUD handlers!
-app.use(bodyParser.urlencoded({ extended: true }))
-
-app.listen(3000, function () {
-    console.log('listening on 3000')
+app.listen(3000, () => {
+    MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
+        if (error) {
+            throw error;
+        }
+        database = client.db(DATABASE_NAME);
+        collection = database.collection("results");
+        console.log("Connected to `" + DATABASE_NAME);
+    });
 });
 
 
-// We normally abbreviate `request` to `req` and `response` to `res`.
-app.get('/', function (request, response) {
-    response.sendFile(__dirname + '/index.html');
-    // Note: __dirname is the current directory you're in. Try logging it and see what you get!
-    // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
-})
+app.post("/person", (request, response) => {
+    collection.insert(request.body, (error, result) => {
+        if (error) {
+            return response.status(500).send(error);
+        }
+        response.send(result.result);
+    });
+});
 
-app.post('/quotes', (request, response) => {
-  quotesCollection.insertOne(request.body)
-    .then(result => {
-      response.redirect('/')
-    })
-    .catch(error => console.error(error))
-})
+/*app.get("/people", (request, response) => {
+    collection.find({}).toArray((error, result) => {
+        if (error) {
+            return response.status(500).send(error);
+        }
+        response.send(result);
+    });
+});
 
-    })
+app.get("/person/:id", (request, response) => {
+    collection.findOne({ "_id": new ObjectId(request.params.id) }, (error, result) => {
+        if (error) {
+            return response.status(500).send(error);
+        }
+        response.send(result);
+    });
+}); */
