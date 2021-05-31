@@ -1,54 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <title>World of Warcraft Survey</title>
-  <meta name="viewport" content="width=device-width" />
-  <script src="https://unpkg.com/jquery"></script>
-  <script src="https://unpkg.com/survey-jquery@1.8.46/survey.jquery.min.js"></script>
-  <link href="https://unpkg.com/survey-jquery@1.8.46/survey.css" type="text/css" rel="stylesheet" />
-  <link rel="stylesheet" href="./index.css">
-
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-
-  <!-- CSS Reset -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-
-  <!-- Milligram CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
-
+    <meta charset="UTF-8">
+    <title>Client Data</title>
 </head>
 
-<body onbeforeunload="return leaveWarning()">
-
-  <h1>Hello worl</h1>
-
-  <section class="consent-button">
-    <p>
-    <p>⚠️<b>By pressing "Continue" You agree that You have read the description of the testing and of Your
-        rights as the participant presented above. You hereby voluntarily agree to participate in the study.</b>⚠️</p>
-    </p>
-    <button type="continue" class="continue" id="showLikert">Continue</button>
-  </section>
-
-
-  <section class="likert">
-    <div id="surveyElement" style="display:inline-block;width:100%;"></div>
-    <div id="surveyResult"></div>
-  </section>
-
-
-  <script type="text/javascript" src="./survey.js"></script>
-  <script src="./changeFlow.js"></script>
-
-  <script> function leaveWarning() {
-      return "This page is asking you to confirm that you want to leave — information you’ve entered may not be saved.";
-    }</script>
-
-  <!-- mongodb+srv://Dovile:<twsm>@wow-web.pi0rs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority -->
-
-  </script>
+<body>
+    <h1>Please fill data in the form below:</h1>
+    <form method="POST" action="/post-feedback">
+        <label>Name:<input type="text" name="client-name" required></label>
+        <br>
+        <label>Email:<input type="text" name="client-email" required></label>
+        <br>
+        <label>Comment:<br><textarea name="comment"></textarea></label>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <a href="/view-feedbacks">View feedbacks</a>
 </body>
 
 </html>
