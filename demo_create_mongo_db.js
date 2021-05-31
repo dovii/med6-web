@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const express = require("express");
 const app = express();
-var port = 4000;
+//var port = 4000;
 
 const uri = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
@@ -21,3 +21,14 @@ mongoose.connect(uri, connectionParams)
 
 app.listen(process.env.PORT || 3000,
     () => console.log("Server is running..."));
+
+
+    var conn = mongoose.Collection;
+    
+    var uploadSchema = new mongoose.Schema({
+        name: String,
+    });
+
+
+    var uploadModel = mongoose.model('uploadData', uploadSchema);
+    module.exports=uploadModel; 
