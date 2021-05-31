@@ -38,8 +38,14 @@ survey
         document
             .querySelector('#surveyResult')
             .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+        console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
+
+        sendDataToServer()
     })
-sendDataToServer;
+//sendDataToServer;
+
+console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
+
 
 $("#surveyElement").Survey({ model: survey });
 

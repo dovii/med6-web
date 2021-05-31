@@ -1,39 +1,18 @@
+const Quiz = require("./model.js");
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
-
-let quizSchema = new Schema({
-    title: {
-        type: String,
-    },
-    description: {
-        type: Number,
-    },
-
-    question: {
-        type: String,
-    },
-});
-
-const Quiz = mongoose.model("Quiz", quizSchema);
-module.exports = Quiz;
-
+var Request = require("request");
 
 var express = require("express");
-var Request = require("request");
+var bodyParser = require("body-parser");
 var app = express();
+app.use(bodyParser.json());
 
 
 const uri =
     "mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-const connectionParams = {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-}
-
-mongoose.connect(uri, connectionParams);
+mongoose.connect(uri);
 
 
 var server = app.listen(process.env.PORT || 8080, function () {
@@ -50,8 +29,6 @@ app.post("/new/", function (req, res) {
         }
     });
 });
-
-
 function handleError(res, reason, message, code) {
     console.log("ERROR: " + reason);
     res.status(code || 500).json({ error: message });
