@@ -2,49 +2,59 @@
 const express = require("express");
 const app = express();
 
-const { MongoClient } = require("mongodb");
+var MongoClient = require('mongodb').MongoClient;
 
-const uri = process.env.MONGODB_URI;
+//const uri = process.env.MONGODB_URI;
+const uri = "mongodb+srv://Dovile:<twsm>@wow-web.pi0rs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-// use the express-static middleware
-app.use(express.static("public"));
+var url = "mongodb://localhost:27017/";
 
-// define the first route
-app.get("/api/movie", async function (req, res) {
-    const client = new MongoClient(uri, { useUnifiedTopology: true });
-
-    try {
-        await client.connect();
-
-        const database = client.db('sample_mflix');
-        const collection = database.collection('movies');
-
-        // Query for a movie that has the title 'Back to the Future'
-        const query = { genres: "Comedy", poster: { $exists: true } };
-        const cursor = await collection.aggregate([
-            { $match: query },
-            { $sample: { size: 1 } },
-            {
-                $project:
-                {
-                    title: 1,
-                    fullplot: 1,
-                    poster: 1
-                }
-            }
-        ]);
-
-        const movie = await cursor.next();
-
-        return res.json(movie);
-    } catch (err) {
-        console.log(err);
-    }
-    finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
-    }
+MongoClient.connect(uri, function (err, db) {
+  if (err) throw err;
+  var dbo = db.db("wow-survey");
+  var myobj = { name: "Company Inc", address: "Highway 37" };
+  dbo.collection("results").insertOne(myobj, function (err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+    db.close();
+  });
 });
+
+
+
+//Receive data from JSON POST and insert into MongoDB
+
+var path = require('path');
+var MongoClient = require('mongodb').MongoClient
+var db;
+
+//Establish Connection
+MongoClient.connect(uri, function (err, database) {
+  if (err)
+    throw err
+  else {
+    db = database;
+    console.log('Connected to MongoDB');
+    //Start app only after connection is ready
+    app.listen(3000);
+  }
+});
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '/index.html'));
+});
+
+app.post('/', function (req, res) {
+  // Insert JSON straight into MongoDB
+  db.collection('wow-survey.results').insert(req.body, function (err, result) {
+    if (err)
+      res.send('Error');
+    else
+      res.send('Success');
+
+  });
+});
+
 
 // start the server listening for requests
 app.listen(process.env.PORT || 5000,
