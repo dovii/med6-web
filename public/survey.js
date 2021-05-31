@@ -38,9 +38,24 @@ survey
         document
             .querySelector('#surveyResult')
             .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
-    });
+    })
+    sendDataToServer;
 
 $("#surveyElement").Survey({ model: survey });
 
+
+function sendDataToServer() {
+
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            result.data = this.responseText;
+        }
+    };
+    xmlhttp.open("POST", "http://localhost:3000");
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.send(JSON.stringify(result.data, null, 3));
+
+}
 
 
