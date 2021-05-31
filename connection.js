@@ -14,7 +14,15 @@ async function main() {
      * pass option { useUnifiedTopology: true } to the MongoClient constructor.
      * const client =  new MongoClient(uri, {useUnifiedTopology: true})
      */
-    const client = new MongoClient(uri);
+    
+    const connectionParams = {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true
+    }
+    
+    
+    const client = new MongoClient(uri, connectionParams);
 
     try {
         // Connect to the MongoDB cluster
