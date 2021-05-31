@@ -1,35 +1,46 @@
-const Quiz = require("./model.js");
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
+const url = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
-var Request = require("request");
+mongoose.connect(url, { useNewUrlParser: true  })
 
-var express = require("express");
-var bodyParser = require("body-parser");
-var app = express();
-app.use(bodyParser.json());
+const db = mongoose.connection
+db.once('open', _ => {
+    console.log('Database connected:', url)
+})
 
+db.on('error', err => {
+    console.error('connection error:', err)
+})
 
-const uri =
-    "mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const Character = require('./models/Character')
 
-mongoose.connect(uri);
+const ryu = new Character({
+    name: 'Ryu',
+    ultimate: 'Shinku Hadoken'
+})
 
-
-var server = app.listen(process.env.PORT || 8080, function () {
-    var port = server.address().port;
-    console.log("App now running on port", port);
-});
-
-app.post("/new/", function (req, res) {
-    Quiz.insertMany(req.body, function (err, doc) {
-        if (err) {
-            handleError(res, err.message, "Failed to create new quiz.");
-        } else {
-            res.status(201).send(JSON.stringify(body));
-        }
-    });
-});
-function handleError(res, reason, message, code) {
-    console.log("ERROR: " + reason);
-    res.status(code || 500).json({ error: message });
+// This does the same thing as above
+function saveCharacter(character) {
+    const c = new Character(character)
+    return c.save()
 }
+
+saveCharacter({
+    name: 'Ryu',
+    ultimate: 'Shinku Hadoken'
+})
+    .then(doc => { console.log(doc) })
+    .catch(error => { console.error(error) })
+
+async function runCode() {
+    const ryu = new Character({
+        name: 'Ryu',
+        ultimate: 'Shinku Hadoken'
+    })
+
+    const doc = await ryu.save()
+    console.log(doc)
+}
+
+runCode()
+    .catch(error => { console.error(error) })

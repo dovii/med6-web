@@ -24,7 +24,6 @@ MongoClient.connect(connectionString, connectionParams)
         const quotesCollection = db.collection('results')
 
 
-
 // Make sure you place body-parser before your CRUD handlers!
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -39,7 +38,7 @@ app.get('/', function (request, response) {
     // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
 })
 
-app.post('/quotes', (request, response) => {
+app.post('/', (request, response) => {
   quotesCollection.insertOne(request.body)
     .then(result => {
       response.redirect('/')
