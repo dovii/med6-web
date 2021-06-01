@@ -110,7 +110,7 @@ function sendDataToServer(survey) {
         data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
 
         
-     success: function (data) {
+ /*    success: function (data) {
         console.log('Success');
         console.log(data);
 
@@ -118,10 +118,10 @@ function sendDataToServer(survey) {
 
     error: function () {
         console.log('We are sorry but our servers are having an issue right now');
-    },
+    }, */
         
     
- /*       success: function (c, textStatus, request) {
+       success: function (c, textStatus, request) {
             console.log("Upload sucessful")
         },
 
@@ -131,7 +131,7 @@ function sendDataToServer(survey) {
             } else {
                 alert("Something went wrong");
             }
-        },*/
+        },
 
     }) 
 
