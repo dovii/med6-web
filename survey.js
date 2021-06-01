@@ -74,8 +74,31 @@ function sendDataToServer(survey) {
         sdata: survey.data
     }; */
 
+
+
+/*var settings = {
+        'cache': false,
+        'dataType': "jsonp",
+        "async": true,
+        "crossDomain": true,
+        "url": "https://wow-survey.herokuapp.com/",
+        "method": "post",
+        "headers": {
+            "accept": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        }
+    }
+
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });*/
+
+
+
     $.ajax({
-        headers: {},
+        headers: { "Access-Control-Allow-Origin": "*",
+                    'Accept': 'application/json'},
         type: "post",
         url: "https://wow-survey.herokuapp.com/",
         contentType: "application/json",
@@ -84,7 +107,7 @@ function sendDataToServer(survey) {
         data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
 
         
-         success: function (data) {
+/*     success: function (data) {
         console.log('Success');
         console.log(data);
 
@@ -93,7 +116,7 @@ function sendDataToServer(survey) {
     error: function () {
         console.log('We are sorry but our servers are having an issue right now');
     },
-        
+        */
     
         success: function (c, textStatus, request) {
             console.log("Upload sucessful")
@@ -107,8 +130,8 @@ function sendDataToServer(survey) {
             }
         },
 
-    })
-}
+    }) 
+} 
 
 
 function sendDataToDatabaseWithoutFeedback() {
