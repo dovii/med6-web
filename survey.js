@@ -135,9 +135,9 @@ function sendDataToServer(survey) {
 
     }) 
 
-    $.post(url, data, function (data, status) {
+   /* $.post(url, data, function (data, status) {
         console.log("Upload status: " + status + " Data sent: " + data)
-    });
+    }); */
 
 } 
 
