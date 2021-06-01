@@ -29,9 +29,13 @@ MongoClient.connect(connectionString, connectionParams)
 // Make sure you place body-parser before your CRUD handlers!
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.listen(3000, function () {
+
+app.listen(process.env.PORT || 5000,
+    () => console.log("Server is running..."));
+
+/*app.listen(3000, function () {
     console.log('listening on 3000')
-});
+});*/
 
 
 app.get('/', function (request, response) {
