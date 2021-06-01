@@ -59,6 +59,7 @@ app.get('/', cors(), function (request, response) {
 })
 
 app.post('/', cors(), (request, response) => {
+  console.log(request.body);
   resultsCollection.insertOne(request.body)
     .then(result => {
       //response.redirect('/');
