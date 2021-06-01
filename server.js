@@ -8,9 +8,9 @@ const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.n
 
 //app.use(express.static("/"));
 
-app.use(cors({ credentials: true, origin: true })); //Must be before BodyParser**
+app.use(cors()); //Must be before BodyParser**
 
-app.options('*', cors({ credentials: true, origin: true }));
+app.options('*', cors());
 
 
 /*const server = require('http').createServer(app);
@@ -49,7 +49,7 @@ app.listen(process.env.PORT || 5000,
 
 
 
-app.get('/', cors({ credentials: true, origin: true }), function (request, response) {
+app.get('/', cors(), function (request, response) {
     response.sendFile(__dirname + '/index.html');
     //response.send('Working!!!');
 
@@ -57,7 +57,7 @@ app.get('/', cors({ credentials: true, origin: true }), function (request, respo
     // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
 })
 
-app.post('/', cors({ credentials: true, origin: true }), (request, response) => {
+app.post('/', cors(), (request, response) => {
   resultsCollection.insertOne(request.body)
     .then(result => {
       //response.redirect('/');
