@@ -83,7 +83,7 @@ function sendDataToServer(survey) {
         dataType: "json",
         data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
 
-        /*
+        
          success: function (data) {
         console.log('Success');
         console.log(data);
@@ -92,8 +92,8 @@ function sendDataToServer(survey) {
 
     error: function () {
         console.log('We are sorry but our servers are having an issue right now');
-    }
-        */
+    },
+        
     
         success: function (c, textStatus, request) {
             console.log("Upload sucessful")
