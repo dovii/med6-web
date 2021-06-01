@@ -76,16 +76,27 @@ function sendDataToServer(survey) {
 
     $.ajax({
         headers: {},
-        type: "POST",
+        type: "post",
         url: "https://wow-survey.herokuapp.com/",
         contentType: "application/json",
         charset: "utf-8",
         dataType: "json",
         data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
+
+        /*
+         success: function (data) {
+        console.log('Success');
+        console.log(data);
+
+    },
+
+    error: function () {
+        console.log('We are sorry but our servers are having an issue right now');
+    }
+        */
     
-        success: function (data) {
-            console.log('Success');
-            console.log(data);
+        success: function (c, textStatus, request) {
+            console.log("Upload sucessful")
         },
 
         error: function (jqXHR, error, errorThrown) {
