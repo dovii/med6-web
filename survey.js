@@ -67,7 +67,7 @@ $("#surveyElement").Survey({ model: survey });
 
 
 function sendDataToServer(survey) {
-    alert("The results are:" + JSON.stringify(survey.data) + ". The results can be sent to a API server and save to a database.");
+    alert("The results are:" + document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length) + ". The results can be sent to a API server and save to a database.");
 
     var data = {
         "request": "Demographic",
@@ -89,8 +89,10 @@ function sendDataToServer(survey) {
                 alert("Something went wrong");
             }
         },
-        data: JSON.stringify(data),
+
+        data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
         success: function (c, textStatus, request) {
+            console.log("Upload sucessful")
         },
     })
 }
