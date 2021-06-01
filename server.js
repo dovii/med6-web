@@ -1,8 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
-var cors = require('cors');
+
 
 const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/wow-survey?retryWrites=true&w=majority';
 
