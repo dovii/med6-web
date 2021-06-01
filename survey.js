@@ -70,8 +70,13 @@ function sendDataToServer(survey) {
     alert("The results are:" + survey + ". The results can be sent to a API server and save to a database.");
 
 
+<<<<<<< HEAD
    // const url = "https://wow-survey.herokuapp.com/";
    // const data = document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length);
+=======
+  //  const url = "https://wow-survey.herokuapp.com/";
+ //   const data = survey;
+>>>>>>> parent of d6e9a08... add back 2nd post
 
   /*  var data = {
         "request": "Demographic",
@@ -144,10 +149,14 @@ function sendDataToServer(survey) {
         }
     });
 
-    $.post(url, data, function (data, status) {
+/*    $.post(url, data, function (data, status) {
         console.log("Upload status: " + status + " Data sent: " + data)
+<<<<<<< HEAD
     });
 
+=======
+    }); */
+>>>>>>> parent of d6e9a08... add back 2nd post
 
 } 
 
