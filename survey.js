@@ -40,7 +40,7 @@ survey
             .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
         console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
 
-        sendDataToServer(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length))
+        sendDataToServer(result.data)
     })
 //sendDataToServer;
 
@@ -67,11 +67,11 @@ $("#surveyElement").Survey({ model: survey });
 
 
 function sendDataToServer(survey) {
-    alert("The results are:" + document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length) + ". The results can be sent to a API server and save to a database.");
+    alert("The results are:" + survey + ". The results can be sent to a API server and save to a database.");
 
 
-    const url = "https://wow-survey.herokuapp.com/";
-    const data = document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length);
+   // const url = "https://wow-survey.herokuapp.com/";
+   // const data = document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length);
 
   /*  var data = {
         "request": "Demographic",
@@ -107,7 +107,7 @@ function sendDataToServer(survey) {
         charset: "utf-8",
         dataType: "json",
         //dataType: "jsonp",
-        data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
+        data: survey,
 
         
  /*    success: function (data) {
