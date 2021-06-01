@@ -71,12 +71,17 @@ function sendDataToServer(survey) {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    // const url = "https://wow-survey.herokuapp.com/";
    // const data = document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length);
 =======
   //  const url = "https://wow-survey.herokuapp.com/";
  //   const data = survey;
 >>>>>>> parent of d6e9a08... add back 2nd post
+=======
+   // const url = "https://wow-survey.herokuapp.com/";
+   // const data = document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length);
+>>>>>>> parent of e3a5171... json maybe
 
   /*  var data = {
         "request": "Demographic",
