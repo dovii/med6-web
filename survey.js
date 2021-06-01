@@ -70,7 +70,7 @@ function sendDataToServer(survey) {
     alert("The results are:" + document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length) + ". The results can be sent to a API server and save to a database.");
 
 
-    const url = "https://wow-survey.herokuapp.com/server.js";
+    const url = "https://wow-survey.herokuapp.com/";
     const data = document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length);
 
   /*  var data = {
@@ -102,7 +102,7 @@ function sendDataToServer(survey) {
         headers: { "Access-Control-Allow-Origin": "*",
                     'Accept': 'application/json'},
         type: "post",
-        url: "https://wow-survey.herokuapp.com/server.js",
+        url: "https://wow-survey.herokuapp.com/",
         contentType: "application/json",
         charset: "utf-8",
         dataType: "json",
