@@ -58,9 +58,9 @@ $("#surveyElement").Survey({ model: survey });
             result.data = this.responseText;
         }
     };
-    xmlhttp.open("POST", "http://localhost:3000");
+    xmlhttp.open("POST", "https://wow-survey.herokuapp.com/server.js");
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xmlhttp.send(JSON.stringify(result.data, null, 3));
+    xmlhttp.send(JSON.stringify(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length);
 
 } */
 
