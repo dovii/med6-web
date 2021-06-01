@@ -81,11 +81,11 @@ function sendDataToServer(survey) {
         contentType: "application/json",
         charset: "utf-8",
         dataType: "json",
-        //data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
-        data: "pepega",
-
-        success: function (c, textStatus, request) {
-            console.log("Upload sucessful")
+        data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
+    
+        success: function (data) {
+            console.log('Success');
+            console.log(data);
         },
 
         error: function (jqXHR, error, errorThrown) {
