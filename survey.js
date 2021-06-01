@@ -98,6 +98,7 @@ function sendDataToServer(survey) {
     })
 }
 
+console.log(data);
 
 
 

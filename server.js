@@ -16,7 +16,6 @@ const connectionParams = {
     useUnifiedTopology: true
 }
 
-
 /*MongoClient.connect(connectionString, connectionParams, (err, client) => {
     if (err) return console.error(err)
     console.log('Connected to Database')
