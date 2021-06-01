@@ -40,7 +40,7 @@ survey
             .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
         console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
 
-        sendDataToServer()
+        sendDataToServer(JSON.stringify(result.data, null, 3))
     })
 //sendDataToServer;
 
@@ -50,7 +50,7 @@ console.log(document.querySelector("#surveyResult").textContent.substring("Resul
 $("#surveyElement").Survey({ model: survey });
 
 
-function sendDataToServer() {
+/*function sendDataToServer() {
 
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
     xmlhttp.onreadystatechange = function () {
@@ -62,11 +62,11 @@ function sendDataToServer() {
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xmlhttp.send(JSON.stringify(result.data, null, 3));
 
-}
+} */
 
 
 
-function sendDataToServer1(survey) {
+function sendDataToServer(survey) {
     alert("The results are:" + JSON.stringify(survey.data) + ". The results can be sent to a API server and save to a database.");
 
     var data = {
@@ -77,10 +77,11 @@ function sendDataToServer1(survey) {
     $.ajax({
         headers: {},
         type: "POST",
-        url: "127.0.0.1:27017/wow-survey.results",
+        url: "https://wow-survey.herokuapp.com/server.js",
         contentType: "application/json",
         charset: "utf-8",
         dataType: "json",
+
         error: function (jqXHR, error, errorThrown) {
             if (jqXHR.status) {
                 alert(jqXHR.responseText);
@@ -96,18 +97,30 @@ function sendDataToServer1(survey) {
 
 
 
-function sendDataToServer() {
 
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-    xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            result.data = this.responseText;
-        }
+function sendDataToDatabaseWithoutFeedback() {
+    var mergedObject = {
+        consentFormAgreed,
+        form1Data,
+        form2Data,
+        form3Data,
+        form4Data,
+        game1Data,
+        game2Data
     };
-    xmlhttp.open("POST", "http://localhost:3000");
-    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xmlhttp.send(JSON.stringify(result.data, null, 3));
+    var message = JSON.stringify(mergedObject, null, 2);
+    console.log("Sending data: " + message);
 
+    const url = "https://coopgame.herokuapp.com/app.js";
+    const data = { say: "sent", to: message }
+    $.ajaxSetup({
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    });
+
+    $.post(url, data, function (data, status) {
+        console.log("Upload status: " + status + " Data sent: " + data)
+    });
 }
-
-
