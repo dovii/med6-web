@@ -50,7 +50,7 @@ console.log(document.querySelector("#surveyResult").textContent.substring("Resul
 $("#surveyElement").Survey({ model: survey });
 
 
-/*function sendDataToServer() {
+/*function sendDataToServer2() {
 
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
     xmlhttp.onreadystatechange = function () {
