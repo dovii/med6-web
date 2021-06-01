@@ -40,7 +40,7 @@ survey
             .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
         console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
 
-        sendDataToServer(result.data)
+        sendDataToServer(result.data);
     })
 //sendDataToServer;
 
@@ -70,47 +70,39 @@ function sendDataToServer(survey) {
     alert("The results are:" + survey + ". The results can be sent to a API server and save to a database.");
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-   // const url = "https://wow-survey.herokuapp.com/";
-   // const data = document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length);
-=======
-  //  const url = "https://wow-survey.herokuapp.com/";
- //   const data = survey;
->>>>>>> parent of d6e9a08... add back 2nd post
-=======
-   // const url = "https://wow-survey.herokuapp.com/";
-   // const data = document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length);
->>>>>>> parent of e3a5171... json maybe
+    const url = "https://wow-survey.herokuapp.com/";
+    const data = survey;
 
-  /*  var data = {
-        "request": "Demographic",
-        sdata: survey.data
-    }; */
+    /*  var data = {
+          "request": "Demographic",
+          sdata: survey.data
+      }; */
 
-/*var settings = {
-        'cache': false,
-        'dataType': "jsonp",
-        "async": true,
-        "crossDomain": true,
-        "url": "https://wow-survey.herokuapp.com/",
-        "method": "post",
-        "headers": {
-            "accept": "application/json",
-            "Access-Control-Allow-Origin": "*"
+    /*var settings = {
+            'cache': false,
+            'dataType': "jsonp",
+            "async": true,
+            "crossDomain": true,
+            "url": "https://wow-survey.herokuapp.com/",
+            "method": "post",
+            "headers": {
+                "accept": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            }
         }
-    }
-
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });*/
+    
+    
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });*/
 
 
 
     $.ajax({
-        headers: { "Access-Control-Allow-Origin": "*",
-                    'Accept': 'application/json'},
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            'Accept': 'application/json'
+        },
         type: "post",
         url: "https://wow-survey.herokuapp.com/",
         contentType: "application/json",
@@ -119,19 +111,19 @@ function sendDataToServer(survey) {
         //dataType: "jsonp",
         data: survey,
 
-        
- /*    success: function (data) {
-        console.log('Success');
-        console.log(data);
 
-    },
+        /*    success: function (data) {
+               console.log('Success');
+               console.log(data);
+       
+           },
+       
+           error: function () {
+               console.log('We are sorry but our servers are having an issue right now');
+           }, */
 
-    error: function () {
-        console.log('We are sorry but our servers are having an issue right now');
-    }, */
-        
-    
-       success: function (c, textStatus, request) {
+
+        success: function (c, textStatus, request) {
             console.log("Upload sucessful")
         },
 
@@ -145,25 +137,13 @@ function sendDataToServer(survey) {
             }
         },
 
-    }); 
+    })
 
-   $.ajaxSetup({
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    });
-
-/*    $.post(url, data, function (data, status) {
+    $.post(url, data, function (data, status) {
         console.log("Upload status: " + status + " Data sent: " + data)
-<<<<<<< HEAD
     });
 
-=======
-    }); */
->>>>>>> parent of d6e9a08... add back 2nd post
-
-} 
+}
 
 
 
