@@ -81,7 +81,8 @@ function sendDataToServer(survey) {
         contentType: "application/json",
         charset: "utf-8",
         dataType: "json",
-        data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
+        //data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
+        data: "pepega",
 
         success: function (c, textStatus, request) {
             console.log("Upload sucessful")
@@ -97,9 +98,6 @@ function sendDataToServer(survey) {
 
     })
 }
-
-console.log(data);
-
 
 
 function sendDataToDatabaseWithoutFeedback() {

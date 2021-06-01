@@ -48,7 +48,7 @@ app.get('/', function (request, response) {
 app.post('/', (request, response) => {
   resultsCollection.insertOne(request.body)
     .then(result => {
-      response.redirect('/');
+      //response.redirect('/');
       console.log(`New listing created with the following id: ${result.insertedId}`);      
     })
     .catch(error => console.error(error))
