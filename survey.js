@@ -98,7 +98,7 @@ function sendDataToServer(survey) {
 
 
 
-/*    $.ajax({
+    $.ajax({
         headers: { "Access-Control-Allow-Origin": "*",
                     'Accept': 'application/json'},
         type: "post",
@@ -107,7 +107,7 @@ function sendDataToServer(survey) {
         charset: "utf-8",
         dataType: "json",
         //dataType: "jsonp",
-        data: survey, 
+        data: survey,
 
         
  /*    success: function (data) {
@@ -121,7 +121,7 @@ function sendDataToServer(survey) {
     }, */
         
     
- /*      success: function (c, textStatus, request) {
+       success: function (c, textStatus, request) {
             console.log("Upload sucessful")
         },
 
@@ -135,9 +135,9 @@ function sendDataToServer(survey) {
             }
         },
 
-    }) */
+    }); 
 
-    $.ajaxSetup({
+ /*   $.ajaxSetup({
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -146,7 +146,8 @@ function sendDataToServer(survey) {
 
     $.post(url, data, function (data, status) {
         console.log("Upload status: " + status + " Data sent: " + data)
-    });
+    });*/
+
 
 } 
 
