@@ -69,18 +69,23 @@ $("#surveyElement").Survey({ model: survey });
 function sendDataToServer(survey) {
     alert("The results are:" + document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length) + ". The results can be sent to a API server and save to a database.");
 
-    var data = {
+  /*  var data = {
         "request": "Demographic",
         sdata: survey.data
-    };
+    }; */
 
     $.ajax({
         headers: {},
         type: "POST",
-        url: "https://wow-survey.herokuapp.com/server.js",
+        url: "https://wow-survey.herokuapp.com/",
         contentType: "application/json",
         charset: "utf-8",
         dataType: "json",
+        data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
+
+        success: function (c, textStatus, request) {
+            console.log("Upload sucessful")
+        },
 
         error: function (jqXHR, error, errorThrown) {
             if (jqXHR.status) {
@@ -90,10 +95,6 @@ function sendDataToServer(survey) {
             }
         },
 
-        data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
-        success: function (c, textStatus, request) {
-            console.log("Upload sucessful")
-        },
     })
 }
 
