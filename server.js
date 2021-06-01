@@ -9,9 +9,11 @@ const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.n
 
 //app.use(express.static("/"));
 
-app.use(cors()); //Must be before BodyParser**
+const options = { methods: ["POST", "GET", "OPTIONS"] };
 
-app.options('*', cors());
+app.use(cors(options)); //Must be before BodyParser**
+
+app.options('*', cors(options));
 
 
 /*const server = require('http').createServer(app);
@@ -50,7 +52,7 @@ app.listen(process.env.PORT || 5000,
 
 
 
-app.get('/', cors(), function (request, response) {
+app.get('/', cors(options), function (request, response) {
     response.sendFile(__dirname + '/index.html');
     //response.send('Working!!!');
 
@@ -58,12 +60,12 @@ app.get('/', cors(), function (request, response) {
     // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
 })
 
-app.post('/', cors(), (request, response) => {
+app.post('/', cors(options), (request, response) => {
   console.log(request.body);
   resultsCollection.insertOne(request.body)
     .then(result => {
       //response.redirect('/');
-      console.log(`New listing created with the following id: ${result.insertedId}`);
+     console.log(`New listing created with the following id: ${result.insertedId}`);
      console.log(request.body);
     })
     .catch(error => console.error(error))
