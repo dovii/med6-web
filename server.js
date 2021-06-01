@@ -10,7 +10,7 @@ app.use(express.static("/"));
 
 app.use(cors()); //Must be before BodyParser**
 
-app.options('/', cors());
+app.options('*', cors());
 
 
 /*const server = require('http').createServer(app);
