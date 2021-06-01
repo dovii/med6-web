@@ -11,6 +11,13 @@ app.use(express.static("/"));
 app.use(cors()); //Must be before BodyParser**
 
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
+
+
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
     cors: {
