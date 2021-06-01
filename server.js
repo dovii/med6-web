@@ -51,8 +51,8 @@ app.listen(process.env.PORT || 5000,
 
 
 app.get('/', cors(), function (request, response) {
-    response.sendFile(__dirname + '/index.html');
-    //response.send('Working!!!');
+    //response.sendFile(__dirname + '/index.html');
+    response.send('Henlo');
 
     // Note: __dirname is the current directory you're in. Try logging it and see what you get!
     // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
@@ -63,7 +63,7 @@ app.post('/', cors(), (request, response) => {
   resultsCollection.insertOne(request.body)
     .then(result => {
       //response.redirect('/');
-      console.log(`New listing created with the following id: ${result.insertedId}`);
+     console.log(`New listing created with the following id: ${result.insertedId}`);
      console.log(request.body);
     })
     .catch(error => console.error(error))
