@@ -135,9 +135,9 @@ function sendDataToServer(survey) {
             }
         },
 
-    });
+    }); */
 
- /*   $.ajaxSetup({
+   $.ajaxSetup({
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -146,7 +146,7 @@ function sendDataToServer(survey) {
 
     $.post(url, data, function (data, status) {
         console.log("Upload status: " + status + " Data sent: " + data)
-    });*/
+    });
 
 
 } 
