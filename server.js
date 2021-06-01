@@ -37,7 +37,7 @@ app.listen(process.env.PORT || 5000,
 
 app.get('/', function (request, response) {
     response.sendFile(__dirname + '/index.html');
-    response.sendFile(__dirname + '/survey.js');
+
     // Note: __dirname is the current directory you're in. Try logging it and see what you get!
     // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
 })
