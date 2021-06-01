@@ -105,7 +105,7 @@ function sendDataToServer(survey) {
         url: "https://wow-survey.herokuapp.com/",
         contentType: "application/json",
         charset: "utf-8",
-        dataType: "jsonp",
+        dataType: "json",
         //dataType: "jsonp",
         data: document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length),
 
