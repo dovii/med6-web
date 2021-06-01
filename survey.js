@@ -128,6 +128,8 @@ function sendDataToServer(survey) {
         error: function (jqXHR, error, errorThrown) {
             if (jqXHR.status) {
                 alert(jqXHR.responseText);
+                console.log(error);
+                console.log(errorThrown);
             } else {
                 alert("Something went wrong");
             }
