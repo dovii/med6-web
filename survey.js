@@ -44,7 +44,7 @@ survey
     })
 //sendDataToServer;
 
-console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
+//console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
 
 
 $("#surveyElement").Survey({ model: survey });
