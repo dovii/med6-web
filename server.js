@@ -2,12 +2,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
+var cors = require('cors');
 
 const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/wow-survey?retryWrites=true&w=majority';
 
 app.use(express.static("/"));
 
-
+app.use(cors()); //Must be before BodyParser**
 
 const connectionParams = {
     useNewUrlParser: true,
