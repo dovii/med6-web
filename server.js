@@ -10,7 +10,7 @@ app.use(express.static("/"));
 
 app.use(cors()); //Must be before BodyParser**
 
-
+app.options('/', cors());
 
 
 /*const server = require('http').createServer(app);
@@ -49,7 +49,7 @@ app.listen(process.env.PORT || 5000,
 
 
 
-app.get('/', function (request, response) {
+app.get('/', cors(), function (request, response) {
     response.sendFile(__dirname + '/index.html');
     //response.send('Working!!!');
 
@@ -57,7 +57,7 @@ app.get('/', function (request, response) {
     // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
 })
 
-app.post('/', (request, response) => {
+ app.post('/', cors(), (request, response) => {
   resultsCollection.insertOne(request.body)
     .then(result => {
       //response.redirect('/');
