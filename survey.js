@@ -40,7 +40,7 @@ survey
             .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
         console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
 
-        sendDataToServer(JSON.stringify(result.data, null, 3))
+        sendDataToServer(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length))
     })
 //sendDataToServer;
 
