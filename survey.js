@@ -77,7 +77,7 @@ function sendDataToServer(survey) {
           "request": "Demographic",
           sdata: survey.data
       }; */
-
+//
     /*var settings = {
             'cache': false,
             'dataType': "jsonp",
