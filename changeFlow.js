@@ -1,22 +1,23 @@
-var formData;
 const animationTime = 300;
 
-window.document.addEventListener('showLikert', handleEventShowLikert, false);
+$(".survey").hide();
+$(".consent").show();
+$(".introsection").show();
 
-$(".likert").hide();
-$(".consent-button").show();
+window.document.addEventListener('showSurvey', handleEventShowLikert, false);
 
 
 function handleEventShowLikert(e) {
-  $(".likert").show(animationTime);
-  $(".consent-button").hide(animationTime);
+  $(".survey").show(animationTime);
+  $(".consent").hide(animationTime);
+  $(".introsection").hide(animationTime);
   console.log(e.detail);
 }
 
 
 //For testing
-$("#showLikert").click(function(){
-  var data = { foo: 'showing likert form' }
-  var event = new CustomEvent('showLikert', { detail: data })
+$("#showSurvey").click(function(){
+  var data = { foo: 'showing survey' }
+  var event = new CustomEvent('showSurvey', { detail: data })
   window.document.dispatchEvent(event);
 }); 

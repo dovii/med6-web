@@ -16,16 +16,21 @@ body{
     font-family: tahoma;
     color: var(--main);
 
-	background-image: url('Images/bg.jpg');
+	background-image: url('Images/shadowlands.jpg');
     background-repeat: no-repeat;  
     background-size: 100% 100%;
 }
 
+html, body {
+    margin: 0;
+    height: 100%;
+}
 
-a{
+
+/*a{
     text-decoration: none;
     color: #000;
-}
+} 
 
 header{
     display: flex;
@@ -33,20 +38,21 @@ header{
     align-items: center;
     font-weight: 900;
     padding: 40px 0;
-}
+} */
 
 .container{
     width: calc(var(--size) * var(--ratio));
     margin: 0 auto;
     background-color: var(--bg);
-    border-radius: 10px;
-    border: 3px solid #2146ad;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 3px solid #94490c;
 }
 
 
 
 
-.logo{
+/*.logo{
     width: 150px;
     padding: 10px 0;
     cursor: pointer;
@@ -69,7 +75,7 @@ header{
 nav{
     display:flex;
 
-}
+} */
 
 
 img {
@@ -89,7 +95,7 @@ nav{
     text-transform: uppercase;
   /* margin: 0 20px 0 5px; */
     margin-right: 10px;
-    padding: 5px 10px;
+    
     transition: all 300ms ease-in-out;
 }
 
@@ -121,16 +127,16 @@ nav a:hover{
 
 .btn{
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 70px;
     text-align: center;
     font-weight: bold;
     border: 2px solid rgb(0, 0, 0);
     cursor: pointer;
     transition: all 300ms ease-in-out;
-    background-color: rgba(0, 150, 187, 0.651);
+    background-color: #c97902;
 }
 
 .btn:hover{
-    background-color: rgb(75, 74, 172);
+    background-color: #5f3a03;
     color: var(--bg);
 }
