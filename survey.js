@@ -103,7 +103,7 @@ function sendDataToServer(survey) {
             "Access-Control-Allow-Origin": "*",
             'Accept': 'application/json'
         },
-   //     type: "post",
+   //   type: "post",
         url: "https://wow-survey.herokuapp.com/",
         contentType: "application/json",
         charset: "utf-8",
