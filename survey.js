@@ -103,7 +103,7 @@ function sendDataToServer(survey) {
             "Access-Control-Allow-Origin": "*",
             'Accept': 'application/json'
         },
-        type: "post",
+   //     type: "post",
         url: "https://wow-survey.herokuapp.com/",
         contentType: "application/json",
         charset: "utf-8",
@@ -139,9 +139,9 @@ function sendDataToServer(survey) {
 
     })
 
- //   $.post(url, data, function (data, status) {
- //       console.log("Upload status: " + status + " Data sent: " + data)
- //   });
+    $.post(url, data, function (data, status) {
+        console.log("Upload status: " + status + " Data sent: " + data)
+    });
 
 }
 
