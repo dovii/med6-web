@@ -21,33 +21,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     
     <!-- Milligram CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">-->
+
+    <link rel="stylesheet" href="./page.css">
 
 </head>
-<body>
+<body onbeforeunload="return leaveWarning()">
 
-<h1>Hello worl</h1>
 
-        <section class="consent-button">
-            <p>⚠️<b>By pressing "Continue" You agree that You have read the description of the testing and of Your
-                    rights as the participant presented above. You hereby voluntarily agree to participate in the study.</b>⚠️</p>
+<!--<header class="container">
+    <a href="" class="logo">LOGO</a>
+    <nav>
+        <a href="">HOME</a>
+        <a href="">ABOUT</a>
+    </nav>
+</header> -->
 
-            <button type="continue" class="continue" id="showLikert">Continue</button>
+ 
+
+  <div class="container">
+   
+        <h1 class="intro-title"><center><img src="Images/wowlogo.png" alt="World of Warcraft: Shadowlands logo"></center></h1>
+        <h1 class="intro-title"><img src="Images/shadowlands.jpg" alt="World of Warcraft: Shadowlands logo"></h1>
+      
+        <!--<h1 class="intro-title">WORLD OF WARCRAFT</h1>
+        <h1 style="text-align:center"><b>SURVEY</b></h1>
+        <br>-->
+        <div class="intro">
+        <p>This is a study on player experience in World of Warcraft. The main focus is on active World of Warcraft: Shadowlands (or "retail") players. 
+            The questionnaire should take around 10 minutes to complete.</p>
+        <br>
+        <p>The information collected in this form will be published and discussed in a project report, but the individual
+        information there will be anonymous. The participation is voluntary, and you may withdraw at any point. In case of
+        withdrawal, I am obliged to destroy your provided data once I am informed about the withdrawal.
+        Should you have any questions, I can be contacted via e-mail: <a href="mailto:dpered18@student.aau.dk">dpered18@student.aau.dk.</a></p>
+
+        <br>
+        <p style="text-align:center">⚠️<b>By pressing "Continue" you agree that you have read the description of the testing and of your
+            rights as the participant presented above. you hereby voluntarily agree to participate in the study.</b>⚠️</p>
+        <br>
+        <button type="continue" class="btn" id="showLikert">CONTINUE</button>
+ 
+    </div>
+</div>
+
+<br>
+<div class="container">
+    <form action="/" method="POST">
+        <section class="likert">
+            <div id="surveyElement" style="display:inline-block;width:100%;"></div>
+            <div id="surveyResult"></div>
         </section>
 
-
-<form action="/" method="POST">
-  <!--  <form action="/" method="POST"></form> -->
-
-    <section class="likert">
-        <div id="surveyElement" style="display:inline-block;width:100%;"></div>
-        <div id="surveyResult"></div>
-    </section>
-
-<!--    <input type="text" placeholder="name" name="name">
+<!-- <input type="text" placeholder="name" name="name">
     <input type="text" placeholder="quote" name="quote">
     <button type="submit">Submit</button> -->
-</form>
+    </form>
+</div>
+
 
 <script type="text/javascript" src="survey.js"></script>
 <script src="changeFlow.js"></script>

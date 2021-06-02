@@ -1,13 +1,13 @@
 var formData;
 const animationTime = 300;
 
-window.document.addEventListener('showLikert', handleEventShowLikert, false);
+window.document.addEventListener('showLikert', showLikert, false);
 
 $(".likert").hide();
 $(".consent-button").show();
 
 
-function handleEventShowLikert(e) {
+function showLikert(e) {
   $(".likert").show(animationTime);
   $(".consent-button").hide(animationTime);
   console.log(e.detail);

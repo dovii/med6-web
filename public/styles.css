@@ -9,6 +9,14 @@ body {
 	text-align: justify;
 	line-height: 1.7;
 	font-size: 18px;
+
+	background-image: url('bg.jpg');
+          background-repeat: no-repeat;  
+          background-size: 100% 100%;
+          color: #261e2e;
+          padding-top: 4%;
+
+
 }
 
 button {
@@ -34,3 +42,4 @@ button {
 	height: 600px;
 	object-fit: cover;
 }
+
