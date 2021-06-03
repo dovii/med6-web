@@ -1,7 +1,7 @@
 :root{
     --link:#000;
     --hover:#b00;
-    --main:#000;
+    --main:rgb(44, 44, 44);
     --bg:#f0f0f0;
     --size:160vmin;
     --ratio: 1/1.1;
@@ -20,12 +20,11 @@ body{
    /* background-repeat: no-repeat;  */
     background-position: center;
     /*background-size: 100% 100%; */
-
     background-size: 100%;
 
     margin: 0px;
-   min-height: 100%;
-   width: 100%;
+    min-height: 100%;
+    width: 100%;
 }
 
 html {
@@ -52,10 +51,33 @@ header{
     width: calc(var(--size) * var(--ratio));
     margin: 0 auto;
     background-color: var(--bg);
-    border-radius: 5px;
-    padding: 5px 10px;
-    border: 3px solid #94490c;
+    border-radius: 8px;
+    border: 3px solid #803f0acb;
+    background-image: url('Images/quest-bg.jpg');
+    background-position: center;
+    background-size: 100% 100%; 
+    padding-right: 4%;
+    padding-left: 4%;
+    padding-top: 3%;
+    padding-bottom: 2%;
 }
+
+.container-survey{
+    width: calc(var(--size) * var(--ratio));
+    margin: 0 auto;
+    background-color: var(--bg);
+    border-radius: 5px;
+   
+    border: 3px solid #94490c;
+    background-image: url('Images/quest-bg.jpg');
+    background-position: center;
+    background-size: 100% 100%; 
+    padding-right: 1%;
+    padding-left: 1%;
+    padding-top: 0.7%;
+    padding-bottom: 0.9%;
+}
+
 
 
 
@@ -98,7 +120,7 @@ img {
 nav{
     display:inline-block;
     color: #000;
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
   /* margin: 0 20px 0 5px; */
@@ -115,7 +137,8 @@ nav a:hover{
 .intro{
     width: 100%;
     overflow: auto;
-    font-size: 1.3em;
+    font-size: 2.2rem;
+    font-family: Friz Quadrata;
    /* text-transform: uppercase;
     text-align: center;
     font-weight: bold; */
@@ -124,11 +147,13 @@ nav a:hover{
 
 .intro-title{
     color: var(--main);
-    font-size: 4em;
-    text-align: center;
+    font-size: 4rem;
+    /* text-align: center; */
     /* text-transform: uppercase; */
     font-weight: bold;
-    margin-top: 5vmin;
+    margin-top: 3vmin;
+    
+
 }
 
 
@@ -138,13 +163,19 @@ nav a:hover{
     padding: 10px 70px;
     text-align: center;
     font-weight: bold;
-    border: 2px solid rgb(0, 0, 0);
+    border: 3px solid rgb(66, 66, 66);
     cursor: pointer;
     transition: all 300ms ease-in-out;
-    background-color: #c97902;
+    background-color: #1696ac;
 }
 
 .btn:hover{
-    background-color: #5f3a03;
+    background-color: #0d5a68;
     color: var(--bg);
 }
+
+
+ @font-face { font-family: Morpheus; src: url('Fonts/MORPHEUS.TTF'); } 
+ @font-face { font-family: Friz Quadrata; src: url('Fonts/Friz\ Quadrata\ Regular.ttf');}
+
+  h1 {font-family: Morpheus}
