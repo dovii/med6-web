@@ -13,7 +13,7 @@ const corsOptions = {
     origin: 'https://wow-survey.herokuapp.com/',
 }
 
-app.use(cors(corsOptions)); //Must be before BodyParser**
+app.use(cors()); //Must be before BodyParser**
 
 app.options('*', cors());
 
@@ -66,7 +66,7 @@ app.listen(process.env.PORT || 5000,
 
 
 
-app.get('/', cors(corsOptions), function (request, response) {
+app.get('/', cors(), function (request, response) {
     //response.sendFile(__dirname + '/index.html');
     response.send('Henlo');
 
@@ -74,7 +74,7 @@ app.get('/', cors(corsOptions), function (request, response) {
     // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
 })
 
-app.post('/', cors(corsOptions), (request, response) => {
+app.post('/', cors(), (request, response) => {
   console.log(request.body);
   resultsCollection.insertOne(request.body)
     .then(result => {
