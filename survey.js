@@ -14,7 +14,7 @@ survey
     .onComplete
     .add(function (result) {
         document
-            .querySelector('#surveyResult')
+            .querySelector("#surveyResult")
             .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
         console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
 
@@ -79,8 +79,8 @@ function sendDataToServer(survey) {
     $.ajax({
         headers: {
             "Access-Control-Allow-Origin": "*",
-            'Accept': 'application/json',
-            'Content-type': 'application/json',
+            "Accept": "application/json",
+            "Content-type": "application/json",
         },
    //   type: "post",
         url: "https://wow-survey.herokuapp.com/",
