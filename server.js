@@ -50,7 +50,8 @@ const connectionParams = {
     console.log('Connected to Database')
 }) */
 
-MongoClient.connect(connectionString, connectionParams)
+//MongoClient.connect(connectionString, connectionParams)
+MongoClient.connect(connectionString)
     .then(client => {
         console.log('Connected to Database')
         const db = client.db('wow-survey')

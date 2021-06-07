@@ -7,7 +7,6 @@ $(".otherinfo").show();
 
 window.document.addEventListener('showSurvey', handleEventShowLikert, false);
 
-
 function handleEventShowLikert(e) {
   $(".survey").show(animationTime);
   $(".consent").hide(animationTime);
