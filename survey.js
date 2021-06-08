@@ -67,7 +67,8 @@ function sendDataToServer(survey) {
 
 
     const url = "https://wow-survey.herokuapp.com/";
-    const data = survey;
+    const data = jQuery.parseJSON(survey);
+;
 
     /*  var data = {
           "request": "Demographic",
@@ -92,8 +93,6 @@ function sendDataToServer(survey) {
             console.log(response);
         });*/
 
-
-
     $.ajax({
         headers: {
             "Access-Control-Allow-Origin": "*",
@@ -106,9 +105,9 @@ function sendDataToServer(survey) {
         charset: "utf-8",
         dataType: "json",
         //dataType: "jsonp",
-        data: survey,
+        data: jQuery.parseJSON(survey),
 
-
+        
         /*    success: function (data) {
                console.log('Success');
                console.log(data);
