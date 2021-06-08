@@ -36,7 +36,7 @@ survey
             .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
         console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
 
-        sendDataToServer(result.data);
+        sendDataToServer(jQuery.parseJSON(result.data));
     })
 //sendDataToServer;
 
@@ -67,8 +67,7 @@ function sendDataToServer(survey) {
 
 
     const url = "https://wow-survey.herokuapp.com/";
-    const data = jQuery.parseJSON(survey);
-;
+    const data = survey;
 
     /*  var data = {
           "request": "Demographic",
@@ -105,7 +104,7 @@ function sendDataToServer(survey) {
         charset: "utf-8",
         dataType: "json",
         //dataType: "jsonp",
-        data: jQuery.parseJSON(survey),
+        data: survey,
 
         
         /*    success: function (data) {
