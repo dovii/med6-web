@@ -52,7 +52,7 @@ header{
     margin: 0 auto;
     background-color: var(--bg);
     border-radius: 8px;
-    border: 3px solid #803f0acb;
+    border: 3px solid #2c2c2c;
     background-image: url('Images/quest-bg.jpg');
     background-position: center;
     background-size: 100% 100%; 
@@ -66,9 +66,8 @@ header{
     width: calc(var(--size) * var(--ratio));
     margin: 0 auto;
     background-color: var(--bg);
-    border-radius: 5px;
-   
-    border: 3px solid #94490c;
+    border-radius: 8px;
+    border: 3px solid #2c2c2c;
     background-image: url('Images/quest-bg-2.png');
     background-position: center;
     background-size: 100% 100%; 
@@ -152,13 +151,10 @@ nav a:hover{
     /* text-transform: uppercase; */
     font-weight: bold;
     margin-top: 3vmin;
-    
-
 }
 
 
-
-.btn{
+.button{
     display: inline-block;
     padding: 10px 70px;
     text-align: center;
@@ -169,7 +165,7 @@ nav a:hover{
     background-color: #1696ac;
 }
 
-.btn:hover{
+.button:hover{
     background-color: #0d5a68;
     color: var(--bg);
 }

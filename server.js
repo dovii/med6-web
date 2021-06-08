@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient
 
 const app = express();
@@ -64,18 +64,16 @@ app.listen(process.env.PORT || 5000,
 
 
 
-app.get('/', cors(), function (request, response) {
+app.get('/', function (request, response) {
     //response.sendFile(__dirname + '/index.html');
     response.send('Heroku server is running.');
 })
 
-app.post('/', cors(), (request, response) => {
-  console.log(request.body);
+app.post('/', (request, response) => {
   resultsCollection.insertOne(request.body)
     .then(result => {
-      //response.redirect('/');
-     console.log(`New listing created with the following id: ${result.insertedId}`);
-     console.log(request.body);
+     console.log(`New document created with the following id: ${result.insertedId}`);
+     //console.log(request.body);
     })
     .catch(error => console.error(error))
 })

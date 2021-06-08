@@ -1,13 +1,12 @@
-const animationTime = 300;
-
 $(".survey").hide();
 $(".consent").show();
 $(".introsection").show();
 $(".otherinfo").show();
 
-window.document.addEventListener('showSurvey', handleEventShowLikert, false);
+window.document.addEventListener('showSurvey', showSurvey, false);
+const animationTime = 300;
 
-function handleEventShowLikert(e) {
+function showSurvey(e) {
   $(".survey").show(animationTime);
   $(".consent").hide(animationTime);
   $(".introsection").hide(animationTime);
