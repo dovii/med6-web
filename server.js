@@ -6,8 +6,8 @@ const MongoClient = require('mongodb').MongoClient
 const app = express();
 
 
-//const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/wow-survey?retryWrites=true&w=majority';
-const connectionString = process.env.MONGODB_URI;
+const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/wow-survey?retryWrites=true&w=majority';
+//const connectionString = process.env.MONGODB_URI;
 
 //app.use(express.static("/"));
 
@@ -66,7 +66,7 @@ app.listen(process.env.PORT || 5000,
 
 app.get('/', cors(), function (request, response) {
     //response.sendFile(__dirname + '/index.html');
-    response.send('Henlo');
+    response.send('Heroku server is running.');
 })
 
 app.post('/', cors(), (request, response) => {
