@@ -36,7 +36,7 @@ survey
             .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
         console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
 
-        sendDataToServer(jQuery.parseJSON(result.data));
+        sendDataToServer(result.data);
     })
 //sendDataToServer;
 
@@ -98,7 +98,7 @@ function sendDataToServer(survey) {
          //   "Accept": "application/json",
         //    "Content-type": "application/json",
         },
-   //   type: "post",
+        type: "POST",
         url: "https://wow-survey.herokuapp.com/",
         contentType: "application/json",
         charset: "utf-8",
