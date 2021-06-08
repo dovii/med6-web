@@ -6,8 +6,8 @@ const MongoClient = require('mongodb').MongoClient
 const app = express();
 
 
-const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/wow-survey?retryWrites=true&w=majority';
-//const connectionString = process.env.MONGODB_URI;
+//const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/wow-survey?retryWrites=true&w=majority';
+const connectionString = process.env.MONGODB_URI;
 
 //app.use(express.static("/"));
 
