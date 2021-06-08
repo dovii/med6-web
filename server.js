@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
-const app = express();
 const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 
+const app = express();
 
-const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/wow-survey?retryWrites=true&w=majority';
+
+//const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/wow-survey?retryWrites=true&w=majority';
+const connectionString = process.env.MONGODB_URI;
 
 //app.use(express.static("/"));
 
@@ -45,13 +47,8 @@ const connectionParams = {
     useUnifiedTopology: true
 }
 
-/*MongoClient.connect(connectionString, connectionParams, (err, client) => {
-    if (err) return console.error(err)
-    console.log('Connected to Database')
-}) */
 
-//MongoClient.connect(connectionString, connectionParams)
-MongoClient.connect(connectionString)
+MongoClient.connect(connectionString, connectionParams)
     .then(client => {
         console.log('Connected to Database')
         const db = client.db('wow-survey')
@@ -70,9 +67,6 @@ app.listen(process.env.PORT || 5000,
 app.get('/', cors(), function (request, response) {
     //response.sendFile(__dirname + '/index.html');
     response.send('Henlo');
-
-    // Note: __dirname is the current directory you're in. Try logging it and see what you get!
-    // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
 })
 
 app.post('/', cors(), (request, response) => {

@@ -98,8 +98,8 @@ function sendDataToServer(survey) {
     $.ajax({
         headers: {
             "Access-Control-Allow-Origin": "*",
-            "Accept": "application/json",
-            "Content-type": "application/json",
+         //   "Accept": "application/json",
+        //    "Content-type": "application/json",
         },
    //   type: "post",
         url: "https://wow-survey.herokuapp.com/",
