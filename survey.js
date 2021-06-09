@@ -100,9 +100,9 @@ function sendDataToServer(survey) {
             "Access-Control-Allow-Origin": "*",
             'Accept': 'application/json',
         },
-        contentType: "application/json",
-        charset: "utf-8",
-        dataType: "json",
+       // contentType: "application/json",
+      //  charset: "utf-8",
+      //  dataType: "json",
     
         success: function (data) {
                console.log('Success');
@@ -159,7 +159,7 @@ function sendDataToServer(survey) {
 
     }) */
 
-    $.post(url, surveyResults, function (data, status) {
+    $.post(url, survey, function (data, status) {
         console.log("Upload status: " + status + " Data sent: " + data)
     }); 
 
