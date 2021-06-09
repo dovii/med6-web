@@ -63,7 +63,7 @@ $("#surveyElement").Survey({ model: survey });
 
 
 function sendDataToServer(survey) {
-    alert("The results are:" + survey + ". The results can be sent to a API server and save to a database.");
+    //alert("The results are:" + survey + ". The results can be sent to a API server and save to a database.");
 
 
     const url = "https://wow-survey.herokuapp.com/";
@@ -114,7 +114,7 @@ function sendDataToServer(survey) {
            },
        
            error: function () {
-               console.log('We are sorry but our servers are having an issue right now');
+               console.log('Something went wrong');
            }, */
 
 

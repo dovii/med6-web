@@ -23,7 +23,9 @@ const corsOptions = {
     origin: 'https://wow-survey.herokuapp.com/',
 }
 
-app.use(cors()); //Must be before BodyParser**
+//app.use(cors()); //Must be before BodyParser**
+
+
 
 app.options('*', cors());
 
@@ -38,7 +40,7 @@ app.use(function (req, res, next) {
 });
 
 
-
+app.use(cors({ origin: true, credentials: true }));
 
 /*const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
