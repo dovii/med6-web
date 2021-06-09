@@ -92,13 +92,13 @@ function sendDataToServer(survey) {
             console.log(response);
         });*/
 
-    $.ajaxSetup({
+    $.ajax({
         headers: {
             "Access-Control-Allow-Origin": "*",
          //   "Accept": "application/json",
             "Content-type": "application/json",
         },
-        //type: "POST",
+        type: "POST",
         url: "https://wow-survey.herokuapp.com/",
         contentType: "application/json",
         charset: "utf-8",
@@ -118,7 +118,7 @@ function sendDataToServer(survey) {
            }, */
 
 
-   /*     success: function (c, textStatus, request) {
+        success: function (c, textStatus, request) {
             console.log("Upload sucessful")
         },
 
@@ -130,7 +130,7 @@ function sendDataToServer(survey) {
             } else {
                 alert("Something went wrong");
             }
-        }, */
+        }, 
 
     }) 
 
