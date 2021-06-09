@@ -76,7 +76,7 @@ function sendDataToServer(survey) {
 //
     var settings = {
             'cache': false,
-            'dataType': "jsonp",
+            'dataType': "json",
             "async": true,
             "crossDomain": true,
             "data": survey,
@@ -84,6 +84,7 @@ function sendDataToServer(survey) {
             "method": "post",
             "headers": {
                 "accept": "application/json",
+                "Content-type": "application/json",
                 "Access-Control-Allow-Origin": "*"
             }
         }
