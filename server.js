@@ -12,10 +12,7 @@ const connectionString = process.env.MONGODB_URI;
 //app.use(cors()); //Must be before BodyParser**
 
 
-app.use(cors({
-    credentials: true,
-    origin: ['https://wow-survey.herokuapp.com/', 'https://www.wow-survey.herokuapp.com/', 'http://localhost:3000']
-}));
+app.use(cors({ origin: "https://wow-survey.herokuapp.com" }));
 
 //app.use(express.static("/"));
 
