@@ -9,22 +9,21 @@ const app = express();
 //const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/wow-survey?retryWrites=true&w=majority';
 const connectionString = process.env.MONGODB_URI;
 
-
-app.options('*', cors()) // include before other routes 
-
-app.use(cors()); //Must be before BodyParser**
+//app.use(cors()); //Must be before BodyParser**
 
 
 
 //app.use(express.static("/"));
 
 
-/*app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
-
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", req.headers.origin);
+    res.header("Access-Control-Allow-Headers", "x-requested-with, content-type");
+    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Max-Age", "1000000000");
+ });
+/*
 app.all('*', function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Credentials', true);

@@ -13,11 +13,3 @@ function showSurvey(e) {
   $(".otherinfo").hide(animationTime);
   console.log(e.detail);
 }
-
-
-//For testing
-$("#showSurvey").click(function(){
-  var data = { foo: 'showing survey' }
-  var event = new CustomEvent('showSurvey', { detail: data })
-  window.document.dispatchEvent(event);
-}); 
