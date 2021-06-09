@@ -1,13 +1,5 @@
 Survey.StylesManager.applyTheme("orange");
 
-
-//var surveyjson = { completedHtml: "Thank you for your participation.", pages: [{ name: "Demographic", elements: [{ type: "radiogroup", name: "Do you currenlty have an active WoW subscription?", description: "If your subscription expired up to 3 months ago, you can still answer \"Yes\"", isRequired: true, choices: ["Yes", "No"] }] }, { name: "Likert", elements: [{ type: "matrix", name: "question1", title: "I could approach the game in my own way.", isRequired: true, columns: ["Strongy disagree", "Disagree", "Neutral", "Agree", "Strongly agree"] }, { type: "matrix", name: "question2", title: "I could approach the game in my own way.", isRequired: true, columns: ["Strongy disagree", "Disagree", "Neutral", "Agree", "Strongly agree"] }], title: "Questionnaire" }] }
-
-//focusFirstQuestionAutomatic = false, - to turn off scrolling
-
-//var surveyjson = {focusFirstQuestionAutomatic: true, completedHtml: "Thank you for your participation.",  pages: [{ name: "Demographic", elements: [{ type: "radiogroup", name: "Gender", title: "Please indicate your gender", hideNumber: true, isRequired: true, choices: ["Male", "Female", "Non-binary", "Other"] }, { type: "text", name: "Country", title: "Please indicate your country of residence", hideNumber: true, isRequired: true }, { type: "text", name: "Age", title: "Please indicate your age", hideNumber: true, isRequired: true, inputType: "number", min: "1", max: "100" }] }, { name: "Subscription", elements: [{ type: "radiogroup", name: "Sub", title: "Do you currently have an active World of Warcraft subscription?", hideNumber: true, correctAnswer: "Yes", isRequired: true, choices: ["Yes", "No"] }, { type: "radiogroup", name: "question3", title: "How many hours each week (on average) do you spend playing World of Warcraft: Shadowlands?", hideNumber: true, correctAnswer: "Yes", isRequired: true, choices: [{ value: "<2", text: "Less than 2 hours a week" }, { value: "2-7", text: "2 - 7 hours a week" }, { value: "8-13", text: "8 - 13 hours a week" }, { value: "14-19", text: "14 - 19 hours a week" }, { value: ">20", text: "More than 20 hours a week" }, { value: "No play", text: "I do not play World of Warcraft: Shadowlands" }] }] }, { name: "Likert", elements: [{ type: "matrix", name: "question1", title: "I could approach the game in my own way.", isRequired: true, columns: ["Strongy disagree", "Disagree", "Neutral", "Agree", "Strongly agree"] }, { type: "matrix", name: "question2", title: "I could approach the game in my own way.", isRequired: true, columns: ["Strongy disagree", "Disagree", "Neutral", "Agree", "Strongly agree"] }] }, { name: "Final", elements: [{ type: "text", name: "Encourages", title: "What encourages you to continue playing the game?", hideNumber: true, isRequired: true }, { type: "text", name: "Feedback", title: "If you have any additional comments about your experience with the game, please write them down here.", hideNumber: true }] }] }
-
-
 var surveyjson = {focusFirstQuestionAutomatic: true, 
                   completedHtml: "Quest completed! Thank you for your help.", 
                   pages: [{ name: "Demographic", elements: [{ 
@@ -33,14 +25,11 @@ survey
     .add(function (result) {
         document
             .querySelector("#surveyResult")
-            .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
-        console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
+            //.textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+        //console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
 
         sendDataToServer(result.data);
     })
-//sendDataToServer;
-
-//console.log(document.querySelector("#surveyResult").textContent.substring("Result JSON:\n".length));
 
 
 $("#surveyElement").Survey({ model: survey });
