@@ -98,7 +98,7 @@ function sendDataToServer(survey) {
          //   "Accept": "application/json",
             "Content-type": "application/json",
         },
-        type: "POST",
+     //   type: "POST",
         url: "https://wow-survey.herokuapp.com/",
         contentType: "application/json",
         charset: "utf-8",
