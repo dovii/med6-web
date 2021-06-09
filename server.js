@@ -9,9 +9,14 @@ const app = express();
 //const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/wow-survey?retryWrites=true&w=majority';
 const connectionString = process.env.MONGODB_URI;
 
+
+app.options('*', cors()) // include before other routes 
+
 app.use(cors()); //Must be before BodyParser**
 
-app.use(express.static("/"));
+
+
+//app.use(express.static("/"));
 
 
 /*app.use(function (req, res, next) {
