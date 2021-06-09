@@ -98,26 +98,20 @@ function sendDataToServer(survey) {
     $.ajaxSetup({
         headers: {
             "Access-Control-Allow-Origin": "*",
-            //"Content-Type": "application/json"
         },
-      //  contentType: "application/json",
-      //  charset: "utf-8",
-      //  dataType: "json",
-    
+
         success: function (data) {
                console.log('Success');
                console.log(data);
-       
            },
        
-
         error: function (jqXHR, error, errorThrown) {
             if (jqXHR.status) {
-                alert(jqXHR.responseText);
+               // alert(jqXHR.responseText);
                 console.log(error);
                 console.log(errorThrown);
             } else {
-                alert("Something went wrong");
+                console.log("Something went wrong");
             }
         },
     });
@@ -170,34 +164,4 @@ function sendDataToServer(survey) {
         console.log("Upload status: " + status + " Data sent: " + data)
     }); 
 
-}
-
-
-
-
-function sendDataToDatabaseWithoutFeedback() {
-    var mergedObject = {
-        consentFormAgreed,
-        form1Data,
-        form2Data,
-        form3Data,
-        form4Data,
-        game1Data,
-        game2Data
-    };
-    var message = JSON.stringify(mergedObject, null, 2);
-    console.log("Sending data: " + message);
-
-    const url = "https://coopgame.herokuapp.com/app.js";
-    const data = { say: "sent", to: message }
-    $.ajaxSetup({
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    });
-
-    $.post(url, data, function (data, status) {
-        console.log("Upload status: " + status + " Data sent: " + data)
-    });
 }
