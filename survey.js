@@ -98,9 +98,8 @@ function sendDataToServer(survey) {
     $.ajaxSetup({
         headers: {
             "Access-Control-Allow-Origin": "*",
-            'Accept': 'application/json',
         },
-       // contentType: "application/json",
+        contentType: "application/json",
       //  charset: "utf-8",
       //  dataType: "json",
     
@@ -110,9 +109,16 @@ function sendDataToServer(survey) {
        
            },
        
-        error: function () {
-               console.log('Something went wrong');
-           }, 
+
+        error: function (jqXHR, error, errorThrown) {
+            if (jqXHR.status) {
+                alert(jqXHR.responseText);
+                console.log(error);
+                console.log(errorThrown);
+            } else {
+                alert("Something went wrong");
+            }
+        },
     });
 
 
