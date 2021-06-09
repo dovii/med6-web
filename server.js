@@ -9,20 +9,22 @@ const app = express();
 //const connectionString = 'mongodb+srv://sample-user:twsm@wow-web.pi0rs.mongodb.net/wow-survey?retryWrites=true&w=majority';
 const connectionString = process.env.MONGODB_URI;
 
-app.use(cors()); //Must be before BodyParser**
+//app.use(cors()); //Must be before BodyParser**
 
 
+app.use(cors({
+    credentials: true,
+    origin: ['https://wow-survey.herokuapp.com', 'https://www.wow-survey.herokuapp.com', 'http://localhost:3000']
+}));
 
 //app.use(express.static("/"));
 
 
-app.get('/', function (req, res) {
+/*app.get('/', function (req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,contenttype'); // If needed
     res.setHeader('Access-Control-Allow-Credentials', true); // If needed
-
-    res.send('cors problem fixed:)');
 });
 /*
 app.all('*', function (req, res, next) {
