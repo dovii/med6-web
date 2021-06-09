@@ -11,7 +11,7 @@ function showSurvey(e) {
   $(".consent").hide(animationTime);
   $(".introsection").hide(animationTime);
   $(".otherinfo").hide(animationTime);
-  console.log(e.detail);
+ // console.log(e.detail);
 }
 
 

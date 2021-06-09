@@ -29,7 +29,7 @@ MongoClient.connect(connectionString, connectionParams)
         const resultsCollection = db.collection('results')
 
 
-// Make sure you place body-parser before your CRUD handlers!
+// Place body-parser before CRUD handlers
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
