@@ -13,3 +13,9 @@ function showSurvey(e) {
   $(".otherinfo").hide(animationTime);
   console.log(e.detail);
 }
+
+
+$("#showSurvey").click(function(){
+  var event = new CustomEvent('showSurvey')
+  window.document.dispatchEvent(event);
+}); 

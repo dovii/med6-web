@@ -95,7 +95,7 @@ function sendDataToServer(survey) {
         }); */
 
 
-    $.ajaxSetup({
+  /*  $.ajaxSetup({
         headers: {
             "Access-Control-Allow-Origin": "*",
  //           "Content-Type": "application/json"
@@ -120,26 +120,26 @@ function sendDataToServer(survey) {
                 alert("Something went wrong");
             }
         },
-    });
+    }); */
 
 
 
-/*    $.ajax({
+    $.ajax({
         headers: {
             "Access-Control-Allow-Origin": "*",
          //   "Accept": "application/json",
-            "Content-type": "application/json",
+          //  "Content-type": "application/json",
         },
-     //   type: "POST",
+        type: "POST",
         url: "https://wow-survey.herokuapp.com/",
-        contentType: "application/json",
+        //contentType: "application/json",
         charset: "utf-8",
-        dataType: "json",
+        //dataType: "json",
         //dataType: "jsonp",
         data: survey,
 
         
-        /*    success: function (data) {
+            success: function (data) {
                console.log('Success');
                console.log(data);
        
@@ -147,7 +147,7 @@ function sendDataToServer(survey) {
        
            error: function () {
                console.log('Something went wrong');
-           }, */
+           }, 
 
 
   /*      success: function (c, textStatus, request) {
@@ -166,9 +166,9 @@ function sendDataToServer(survey) {
 
     }) */
 
-    $.post(url, survey, function (data, status) {
+   /* $.post(url, survey, function (data, status) {
         console.log("Upload status: " + status + " Data sent: " + data)
-    }); 
+   */}); 
 
 }
 
