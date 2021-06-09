@@ -74,7 +74,7 @@ function sendDataToServer(survey) {
           sdata: survey.data
       }; */
 //
-    var settings = {
+ /*   var settings = {
             'cache': false,
             'dataType': "json",
             "async": true,
@@ -92,7 +92,30 @@ function sendDataToServer(survey) {
     
         $.ajax(settings).done(function (response) {
             console.log(response);
-        });
+        }); */
+
+
+    $.ajaxSetup({
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            'Accept': 'application/json',
+        },
+        contentType: "application/json",
+        charset: "utf-8",
+        dataType: "json",
+    
+        success: function (data) {
+               console.log('Success');
+               console.log(data);
+       
+           },
+       
+        error: function () {
+               console.log('Something went wrong');
+           }, 
+    });
+
+
 
 /*    $.ajax({
         headers: {
@@ -136,9 +159,9 @@ function sendDataToServer(survey) {
 
     }) */
 
-/*    $.post(url, surveyResults, function (data, status) {
+    $.post(url, surveyResults, function (data, status) {
         console.log("Upload status: " + status + " Data sent: " + data)
-    }); */
+    }); 
 
 }
 
