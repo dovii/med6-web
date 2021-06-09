@@ -67,18 +67,19 @@ function sendDataToServer(survey) {
 
 
     const url = "https://wow-survey.herokuapp.com";
-    const data = survey;
+    const surveyResults = survey;
 
     /*  var data = {
           "request": "Demographic",
           sdata: survey.data
       }; */
 //
-    /*var settings = {
+    var settings = {
             'cache': false,
             'dataType': "jsonp",
             "async": true,
             "crossDomain": true,
+            "data": survey,
             "url": "https://wow-survey.herokuapp.com/",
             "method": "post",
             "headers": {
@@ -90,7 +91,7 @@ function sendDataToServer(survey) {
     
         $.ajax(settings).done(function (response) {
             console.log(response);
-        });*/
+        });
 
 /*    $.ajax({
         headers: {
@@ -134,9 +135,9 @@ function sendDataToServer(survey) {
 
     }) */
 
-    $.post(url, data, function (data, status) {
+/*    $.post(url, surveyResults, function (data, status) {
         console.log("Upload status: " + status + " Data sent: " + data)
-    });
+    }); */
 
 }
 
