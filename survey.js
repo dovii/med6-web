@@ -99,7 +99,7 @@ function sendDataToServer(survey) {
         headers: {
             "Access-Control-Allow-Origin": "*",
         },
-        contentType: "application/json",
+      //  contentType: "application/json",
       //  charset: "utf-8",
       //  dataType: "json",
     
