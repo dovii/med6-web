@@ -66,7 +66,7 @@ function sendDataToServer(survey) {
     //alert("The results are:" + survey + ". The results can be sent to a API server and save to a database.");
 
 
-    const url = "https://wow-survey.herokuapp.com/";
+    const url = "https://wow-survey.herokuapp.com";
     const data = survey;
 
     /*  var data = {
@@ -92,11 +92,11 @@ function sendDataToServer(survey) {
             console.log(response);
         });*/
 
-    $.ajax({
+    $.ajaxSetup({
         headers: {
             "Access-Control-Allow-Origin": "*",
          //   "Accept": "application/json",
-        //    "Content-type": "application/json",
+            "Content-type": "application/json",
         },
         //type: "POST",
         url: "https://wow-survey.herokuapp.com/",
@@ -118,7 +118,7 @@ function sendDataToServer(survey) {
            }, */
 
 
-        success: function (c, textStatus, request) {
+   /*     success: function (c, textStatus, request) {
             console.log("Upload sucessful")
         },
 
@@ -130,9 +130,9 @@ function sendDataToServer(survey) {
             } else {
                 alert("Something went wrong");
             }
-        },
+        }, */
 
-    })
+    }) 
 
     $.post(url, data, function (data, status) {
         console.log("Upload status: " + status + " Data sent: " + data)
