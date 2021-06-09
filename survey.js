@@ -92,7 +92,7 @@ function sendDataToServer(survey) {
             console.log(response);
         });*/
 
-    $.ajax({
+/*    $.ajax({
         headers: {
             "Access-Control-Allow-Origin": "*",
          //   "Accept": "application/json",
@@ -118,7 +118,7 @@ function sendDataToServer(survey) {
            }, */
 
 
-        success: function (c, textStatus, request) {
+  /*      success: function (c, textStatus, request) {
             console.log("Upload sucessful")
         },
 
@@ -132,7 +132,7 @@ function sendDataToServer(survey) {
             }
         }, 
 
-    }) 
+    }) */
 
     $.post(url, data, function (data, status) {
         console.log("Upload status: " + status + " Data sent: " + data)
