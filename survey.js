@@ -98,7 +98,7 @@ function sendDataToServer(survey) {
     $.ajaxSetup({
         headers: {
             "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json"
+ //           "Content-Type": "application/json"
         },
       //  contentType: "application/json",
       //  charset: "utf-8",
