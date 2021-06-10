@@ -46,7 +46,7 @@ app.post('/', (request, response) => {
   resultsCollection.insertOne(request.body)
     .then(result => {
      console.log(`New document created with the following id: ${result.insertedId}`);
-     //console.log(request.body);
+     console.log(request.body);
     })
     .catch(error => console.error(error))
 })

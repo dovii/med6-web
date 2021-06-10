@@ -26,7 +26,7 @@ survey
         document
             .querySelector("#surveyResult")
             //.textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
-            //console.log(result.data);
+            console.log(result.data);
 
         sendDataToServer(result.data);
     })
